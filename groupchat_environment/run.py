@@ -252,6 +252,15 @@ class MultiAgentEnvironment(BaseModel):
         """
         return self.current_step
 
+    def get_history(self) -> EnvironmentHistory:
+        """
+        Return the environment history.
+
+        Returns:
+            EnvironmentHistory: The environment history.
+        """
+        return self.history
+
     def update_history(self, action: GlobalAction, step: EnvironmentStep):
         """
         Update the environment history with the latest step.
@@ -346,8 +355,8 @@ if __name__ == "__main__":
     # print(response)
 
     input_params = InputSchema(
-        function_name="random_action_test",
-        function_input_data={"num_agents": 5, "num_steps": 10},
+        function_name="get_global_state",
+        function_input_data=None,
     )
 
     environment_run = EnvironmentRunInput(
