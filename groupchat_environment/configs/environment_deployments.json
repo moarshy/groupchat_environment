@@ -1,9 +1,10 @@
 [
     {
         "name": "environment_deployment_1",
+        "module": {"name": "groupchat_environment"},
         "environment_node_url": "postgresql://naptha:naptha@localhost:3002/naptha",
         "environment_config": {
-            "config_name": "group_chat",
+            "config_name": "GroupChatConfig",
             "environment_type": "groupchat",
             "max_rounds": 5,
             "initial_topic": "Initial Market Discussion",
