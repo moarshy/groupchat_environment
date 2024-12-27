@@ -2,7 +2,7 @@
     {
         "name": "environment_deployment_1",
         "module": {"name": "groupchat_environment"},
-        "environment_node_url": "postgresql://naptha:naptha@localhost:3002/naptha",
+        "node": {"ip": "localhost"},
         "environment_config": {
             "config_name": "GroupChatConfig",
             "environment_type": "groupchat",
