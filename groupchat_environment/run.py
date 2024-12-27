@@ -306,15 +306,15 @@ class MultiAgentEnvironment(BaseModel):
 def create_environment(environment_run):
 
     group_chat = GroupChat(
-        max_rounds=environment_run.environment_deployment.environment_config.max_rounds,
-        current_topic=environment_run.environment_deployment.environment_config.initial_topic,
+        max_rounds=environment_run.deployment.environment_config.max_rounds,
+        current_topic=environment_run.deployment.environment_config.initial_topic,
         speaker_order=["0"]
     )
 
     environment = MultiAgentEnvironment(
-        name=environment_run.environment_deployment.environment_config.config_name,
+        name=environment_run.deployment.environment_config.config_name,
         address="group_chat_address",
-        max_steps=environment_run.environment_deployment.environment_config.max_rounds,
+        max_steps=environment_run.deployment.environment_config.max_rounds,
         action_space=GroupChatActionSpace(),
         observation_space=GroupChatObservationSpace(),
         mechanism=group_chat
@@ -361,7 +361,7 @@ if __name__ == "__main__":
 
     environment_run = EnvironmentRunInput(
         inputs=input_params,
-        environment_deployment=environment_deployments[0],
+        deployment=environment_deployments[0],
         consumer_id=naptha.user.id,
     )
     response = run(environment_run)
