@@ -303,18 +303,18 @@ class MultiAgentEnvironment(BaseModel):
         print(self.get_global_state())
         print("\n" + "="*50)
 
-def create_environment(environment_run):
+def create_environment(module_run):
 
     group_chat = GroupChat(
-        max_rounds=environment_run.deployment.environment_config.max_rounds,
-        current_topic=environment_run.deployment.environment_config.initial_topic,
+        max_rounds=module_run.deployment.config.max_rounds,
+        current_topic=module_run.deployment.config.initial_topic,
         speaker_order=["0"]
     )
 
     environment = MultiAgentEnvironment(
-        name=environment_run.deployment.environment_config.config_name,
+        name=module_run.deployment.config.config_name,
         address="group_chat_address",
-        max_steps=environment_run.deployment.environment_config.max_rounds,
+        max_steps=module_run.deployment.config.max_rounds,
         action_space=GroupChatActionSpace(),
         observation_space=GroupChatObservationSpace(),
         mechanism=group_chat
@@ -322,14 +322,14 @@ def create_environment(environment_run):
 
     return environment
 
-def run(environment_run: EnvironmentRunInput):
+def run(module_run: EnvironmentRunInput):
 
-    environment = create_environment(environment_run)
+    environment = create_environment(module_run)
 
-    method = getattr(environment, environment_run.inputs.function_name, None)
+    method = getattr(environment, module_run.inputs.function_name, None)
 
-    if environment_run.inputs.function_input_data:
-        return method(**environment_run.inputs.function_input_data)
+    if module_run.inputs.function_input_data:
+        return method(**module_run.inputs.function_input_data)
     else:
         return method()
 

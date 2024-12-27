@@ -3,7 +3,7 @@
         "name": "environment_deployment_1",
         "module": {"name": "groupchat_environment"},
         "node": {"ip": "localhost"},
-        "environment_config": {
+        "config": {
             "config_name": "GroupChatConfig",
             "environment_type": "groupchat",
             "max_rounds": 5,
