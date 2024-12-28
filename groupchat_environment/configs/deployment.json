@@ -4,7 +4,8 @@
         "module": {"name": "groupchat_environment"},
         "node": {"ip": "localhost"},
         "config": {
-            "config_name": "GroupChatConfig",
+            "config_name": "groupchat_config",
+            "config_schema": "GroupChatConfig",
             "environment_type": "groupchat",
             "max_rounds": 5,
             "initial_topic": "Initial Market Discussion",
